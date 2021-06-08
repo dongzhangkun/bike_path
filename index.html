@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~8.4.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-map-container {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+#map {
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+#deckgl-overlay {
+  z-index: 2;
+  background: none;
+}
+
+#deck-map-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const jsonInput = {"initialViewState": {"latitude": 37.55166181400224, "longitude": 126.91175641427574, "zoom": 13}, "layers": [{"@@type": "LineLayer", "autoHighlight": true, "data": [{"Counts": 56, "lat": 37.5555962174415, "lon": 126.905604188077, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\ub9dd\uc6d01\ub3d9\uc8fc\ubbfc\uc13c\ud130"}, {"Counts": 53, "lat": 37.555853803272036, "lon": 126.91009460492583, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\ub9dd\uc6d0\uc5ed 2\ubc88\ucd9c\uad6c"}, {"Counts": 43, "lat": 37.5567638950125, "lon": 126.89696517576, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\ub9c8\ud3ec\uad6c\ubbfc\uccb4\uc721\uc13c\ud130"}, {"Counts": 42, "lat": 37.5634871865932, "lon": 126.903425598797, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\ub9c8\ud3ec\uad6c\uccad\uc5ed"}, {"Counts": 37, "lat": 37.558738340035134, "lon": 126.9071767980205, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "SK\ub9dd\uc6d0\ub3d9\uc8fc\uc720\uc18c"}, {"Counts": 28, "lat": 37.5560071791805, "lon": 126.910366038667, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\ub9dd\uc6d0\uc5ed 1\ubc88\ucd9c\uad6c"}, {"Counts": 25, "lat": 37.549527, "lon": 126.905731, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "(\uad6c)\ud569\uc815\ub3d9 \uc8fc\ubbfc\uc13c\ud130"}, {"Counts": 24, "lat": 37.5517809225224, "lon": 126.902802439392, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\ub9dd\uc6d02\ube57\ubb3c\ud38c\ud504\uc7a5"}, {"Counts": 20, "lat": 37.56470083965857, "lon": 126.92732466740878, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\uc77c\uc9c4\uc544\uc774\uc70c\uc544\ud30c\ud2b8"}, {"Counts": 17, "lat": 37.5527116278928, "lon": 126.918223927386, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\uc11c\uad50\ub3d9 \uc0ac\uac70\ub9ac"}, {"Counts": 17, "lat": 37.55856738820341, "lon": 126.92529115638466, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\ud64d\ub300\uc785\uad6c\uc5ed 3\ubc88\ucd9c\uad6c"}, {"Counts": 17, "lat": 37.56507874551788, "lon": 126.90391591153272, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\ubcbd\uc0b0\uc0c1\uc554\uc2a4\ub9c8\ud2b8\ud050\ube0c"}, {"Counts": 16, "lat": 37.5592370384895, "lon": 126.927067399121, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\ub9c8\uc2a4\ud0c0 \ube4c\ub529"}, {"Counts": 14, "lat": 37.55690884034165, "lon": 126.92417237436065, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\ud64d\ub300\uc785\uad6c\uc5ed 8\ubc88\ucd9c\uad6c"}, {"Counts": 14, "lat": 37.557432, "lon": 126.918426, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\uc2e0\ud55c\uc740\ud589 \uc11c\uad50\ub3d9\uae08\uc735\uc13c\ud130\uc810"}, {"Counts": 12, "lat": 37.548765649901185, "lon": 126.91371302583495, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\ud569\uc815\uc5ed 7\ubc88\ucd9c\uad6c"}, {"Counts": 12, "lat": 37.5503204713173, "lon": 126.915791216707, "slat": 37.55166181400224, "slon": 126.91175641427573, "\ub300\uc5ec \uc704\uce58": "\ud569\uc815\ub3d9\uc8fc\ubbfc\uc13c\ud130 \uc55e", "\ubc18\ub0a9 \uc704\uce58": "\uc81c\uc77c\ube4c\ub529"}], "getColor": "@@=[Counts*100,0,0]", "getSourcePosition": "@@=[slon, slat]", "getTargetPosition": "@@=[lon, lat]", "getWidth": "@@=Counts/5", "id": "00831c2c-ae13-4abd-b11a-fa49757f3ad7", "pickable": true}], "mapProvider": "carto", "mapStyle": "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json", "views": [{"@@type": "MapView", "controller": true}]};
+    const tooltip = true;
+    const customLibraries = null;
+
+    const deckInstance = createDeck({
+                  container: document.getElementById('deck-container'),
+      jsonInput,
+      tooltip,
+      customLibraries
+    });
+
+  </script>
+</html>
